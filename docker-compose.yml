@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: oralvision_db
+    environment:
+      POSTGRES_DB: oralvision
+      POSTGRES_USER: oralvision
+      POSTGRES_PASSWORD: oralvision123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oralvision"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: oralvision_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://oralvision:oralvision123@postgres:5432/oralvision
+      JWT_SECRET: oralvision-super-secret-jwt-key-2024
+      JWT_ALGORITHM: HS256
+      JWT_EXPIRE_MINUTES: "1440"
+      N8N_WEBHOOK_URL: ${N8N_WEBHOOK_URL:-}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:80,http://frontend
+    volumes:
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8000
+    container_name: oralvision_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  pgdata:
