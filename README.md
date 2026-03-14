@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OralVision API & Backend Infrastructure
 
 OralVision is an AI-powered rural oral cancer early detection platform (built for ASHA workers in India), providing multi-engine risk assessment, clinical guidance, and an integrated RAG chatbot.
@@ -74,3 +75,6 @@ For a tech hackathon or production launch, we recommend the following free/low-c
 6. Click **Deploy**.
 
 > **Note on Uploads:** In production on Render, local file uploads (the `uploads/` folder) will be lost when the server restarts. For a true enterprise setup, you should update the image upload logic in `predict.py` to save images to an AWS S3 bucket or Firebase Storage instead of the local disk.
+=======
+# OralVision-Multimodal-AI-for-Early-Oral-Cancer-Detection-and-Automated-Triaging-in-Rural-Healthcare
+>>>>>>> b03badfa8d3fdba769e030caa00b53b57dad25aa
