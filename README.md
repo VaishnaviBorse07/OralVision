@@ -17,38 +17,55 @@ Automatic hospital referral alerts for high-risk cases
 Designed for low-connectivity rural healthcare environments
 Optimized for low-end Android devices
 Multilingual-ready architecture for regional language support
-                                                System Architecture
-                                                User (Mobile Device)
-                                                        │
-                                                        ▼
-                                                ┌──────────────────┐
-                                                │  React PWA       │
-                                                │  (Frontend)      │
-                                                └────────┬─────────┘
-                                                         │ REST API
-                                                         ▼
-                                                ┌──────────────────┐
-                                                │  FastAPI Backend │
-                                                │  + Auth + Alerts │
-                                                └────────┬─────────┘
-                                                         │
-                                            ┌────┴────────────────────┐
-                                            │                         │
-                                            ▼                         ▼
-                                        ┌──────────────┐    ┌─────────────────────┐
-                                        │ DenseNet121  │    │ Generative AI Layer │
-                                        │ Risk Model   │    │ Clinical Summary AI │
-                                        └──────────────┘    └─────────────────────┘
+                                   ┌─────────────────────────────┐
+                                   │     User / Health Worker    │
+                                   │      (Mobile Device)        │
+                                   └─────────────┬───────────────┘
                                                  │
                                                  ▼
-                                        ┌──────────────────┐
-                                        │ PostgreSQL DB    │
-                                        └──────────────────┘
-                                                 │
-                                                 ▼
-                                        ┌──────────────────┐
-                                        │ Hospital Alerts  │
-                                        └──────────────────┘
+                              ┌──────────────────────────────────┐
+                              │        React PWA Frontend        │
+                              │  • Mobile-First Interface        │
+                              │  • Offline Support (PWA)         │
+                              │  • Camera Capture Module         │
+                              └─────────────┬────────────────────┘
+                                            │ REST API
+                                            ▼
+                              ┌──────────────────────────────────┐
+                              │         FastAPI Backend          │
+                              │  • Authentication                │
+                              │  • API Routing                   │
+                              │  • Real-Time Inference           │
+                              │  • Referral Alert Handling       │
+                              └─────────────┬────────────────────┘
+                                            │
+                    ┌───────────────────────┴────────────────────────┐
+                    │                                                │
+                    ▼                                                ▼
+        ┌──────────────────────────┐              ┌──────────────────────────┐
+        │   DenseNet121 AI Model   │              │  Generative AI Engine    │
+        │  • Oral Lesion Analysis  │              │  • Clinical Summaries    │
+        │  • Risk Classification   │              │  • Plain Language Output │
+        │  • Low / Med / High Risk │              │  • ASHA Worker Friendly  │
+        └─────────────┬────────────┘              └─────────────┬────────────┘
+                      │                                         │
+                      └─────────────────┬───────────────────────┘
+                                        │
+                                        ▼
+                           ┌──────────────────────────┐
+                           │      PostgreSQL DB       │
+                           │  • Patient Records       │
+                           │  • Scan History          │
+                           │  • Risk Reports          │
+                           └─────────────┬────────────┘
+                                         │
+                                         ▼
+                           ┌──────────────────────────┐
+                           │   Hospital Alert System  │
+                           │  • Auto Referral Alerts  │
+                           │  • Emergency Notification│
+                           │  • High-Risk Escalation  │
+                           └──────────────────────────┘
 * AI Model Details
 Component	Details
 Architecture	DenseNet121 (Fine-tuned)
