@@ -43,7 +43,9 @@ Generative AI	OpenAI API / Custom LLM
 Database	PostgreSQL
 Deployment	Docker, Uvicorn
 Image Processing	OpenCV, Pillow
-📁 Project Structure
+# 📁 Project Structure
+
+```bash
 OralVision/
 │
 ├── backend/
@@ -81,6 +83,7 @@ OralVision/
 ├── docker-compose.yml
 ├── requirements.txt
 └── README.md
+```
 🚀 Getting Started
 📋 Prerequisites
 
