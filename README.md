@@ -17,38 +17,38 @@ Automatic hospital referral alerts for high-risk cases
 Designed for low-connectivity rural healthcare environments
 Optimized for low-end Android devices
 Multilingual-ready architecture for regional language support
-System Architecture
-User (Mobile Device)
-        │
-        ▼
-┌──────────────────┐
-│  React PWA       │
-│  (Frontend)      │
-└────────┬─────────┘
-         │ REST API
-         ▼
-┌──────────────────┐
-│  FastAPI Backend │
-│  + Auth + Alerts │
-└────────┬─────────┘
-         │
-    ┌────┴────────────────────┐
-    │                         │
-    ▼                         ▼
-┌──────────────┐    ┌─────────────────────┐
-│ DenseNet121  │    │ Generative AI Layer │
-│ Risk Model   │    │ Clinical Summary AI │
-└──────────────┘    └─────────────────────┘
-         │
-         ▼
-┌──────────────────┐
-│ PostgreSQL DB    │
-└──────────────────┘
-         │
-         ▼
-┌──────────────────┐
-│ Hospital Alerts  │
-└──────────────────┘
+                                                System Architecture
+                                                User (Mobile Device)
+                                                        │
+                                                        ▼
+                                                ┌──────────────────┐
+                                                │  React PWA       │
+                                                │  (Frontend)      │
+                                                └────────┬─────────┘
+                                                         │ REST API
+                                                         ▼
+                                                ┌──────────────────┐
+                                                │  FastAPI Backend │
+                                                │  + Auth + Alerts │
+                                                └────────┬─────────┘
+                                                         │
+                                            ┌────┴────────────────────┐
+                                            │                         │
+                                            ▼                         ▼
+                                        ┌──────────────┐    ┌─────────────────────┐
+                                        │ DenseNet121  │    │ Generative AI Layer │
+                                        │ Risk Model   │    │ Clinical Summary AI │
+                                        └──────────────┘    └─────────────────────┘
+                                                 │
+                                                 ▼
+                                        ┌──────────────────┐
+                                        │ PostgreSQL DB    │
+                                        └──────────────────┘
+                                                 │
+                                                 ▼
+                                        ┌──────────────────┐
+                                        │ Hospital Alerts  │
+                                        └──────────────────┘
 * AI Model Details
 Component	Details
 Architecture	DenseNet121 (Fine-tuned)
